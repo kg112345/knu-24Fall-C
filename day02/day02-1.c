@@ -38,3 +38,5 @@ int main(void) {
 		printf("잘못 입력함");
 	}
 }
+
+// 수정
