@@ -1,7 +1,17 @@
 #include <stdio.h>
 
+int swap(int* a, int* b) {
+	a = 20;
+	b = 10;
+
+	printf("a: %d, b: %d", a, b);
+}
+
 int main(void) {
-	char* a, b;
-	printf("%d \n", sizeof(a));
-	printf("%d \n", sizeof(b));
+	int a = 10;
+	int b = 20;
+
+	printf("a: %d, b: %d \n", a, b);
+
+	swap(&a, &b);
 }
