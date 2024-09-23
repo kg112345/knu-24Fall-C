@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int swap(int* a, int* b) {
+void swap(int* a, int* b) {
 	a = 20;
 	b = 10;
 
