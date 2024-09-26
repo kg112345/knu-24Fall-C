@@ -32,4 +32,8 @@ int main(void) {
 	for (int i = 0; i < n; i++) {
 		printf("학번: %d, 이름: %s, 점수: %d \n", num[i], name[i], score[i]);
 	}
+
+	free(num);
+	free(score);
+	free(name);
 }
