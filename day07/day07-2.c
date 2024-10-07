@@ -6,26 +6,26 @@
 int main(void) {
     double x, y, pi;
     int count = 0, circle = 0;
-    long long billion = 1000000000; // 10¾ï
-    int tenMillion = 10000000;  // 1Ãµ¸¸
+    int billion = 1000000000; // 10ì–µ
+    int tenMillion = 10000000;  // 1ì²œë§Œ
     double r = 1.0;
     
     srand(time(NULL));
     
-    for (long long i = 1; i <= billion; i++) {
+    for (int i = 1; i <= billion; i++) {
         x = (double)rand() / RAND_MAX;  
         y = (double)rand() / RAND_MAX;
         
         double sum = sqrt(pow(x, 2) + pow(y, 2));
 
-        if (sum <= r) { // ºÎÃ¤²Ã ¾È¿¡ Á¡ÀÌ Á¸ÀçÇÏ´Â  °æ¿ì
+        if (sum <= r) { // ë¶€ì±„ê¼´ ì•ˆì— ì ì´ ì¡´ìž¬í•˜ëŠ”  ê²½ìš°
             circle++;
         }
         
         if (i % tenMillion == 0) {
             pi = 4.0 * circle / i;
             int procedure = i / tenMillion;
-            printf("%02d%% ÁøÇà, ¿øÁÖÀ²: %f \t", procedure, pi);
+            printf("%02d%% ì§„í–‰, ì›ì£¼ìœ¨: %f \t", procedure, pi);
             
 
             for (int j = 0; j < procedure / 5; j++) {
@@ -39,5 +39,5 @@ int main(void) {
         }
     }
 
-    printf("¿øÁÖÀ²: %f", pi);
+    printf("ì›ì£¼ìœ¨: %f", pi);
 }
