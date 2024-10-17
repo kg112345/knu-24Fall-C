@@ -6,7 +6,7 @@
 void fillRandom(int arr[SIZE][SIZE]) {
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
-			arr[i][j] = rand() % 20 + 1; // 1~20¹üÀ§
+			arr[i][j] = rand() % 20 + 1; // 1~20ë²”ìœ„
 		}
 	}
 }
@@ -20,44 +20,38 @@ void printArray(int arr[SIZE][SIZE]) {
 	}
 }
 
-void movePointer(int arr[SIZE][SIZE]) {
-    int x = 0; 
-    int y = 0;
-    int current;
+void movePointer(void* arr) {
+	int x = 0;
+	int y = 0;
+	
+	while (1) {
+		int endX = x;
+		int endY = y;
+		int value = *((int*)arr + y + 10 * x);
+		printf("í˜„ì¬ ìœ„ì¹˜: (%d, %d), ë°°ì—´ì˜ ê°’: %d\n", x, y, value);
 
-    
-    while (x < 10) {
-        current = arr[x][y];
-
-        printf("ÇöÀç À§Ä¡: (%d, %d), ¹è¿­ÀÇ °ª: %d\n", x, y, current);
-
-        y += current;
-
-        if (y >= SIZE) {
-            x += y / SIZE;
-            y = y % SIZE;  
-        }
+		y += value % 10;
+		if (y >= SIZE) {
+			y %= SIZE;
+			x++;
+		}
+		x += value / 10;
 		
-    }
-	x -= current / SIZE;
-	y -= current % SIZE;
-
-	if (y < 0) {
-		x += ((y % 10 != 0) ? y / SIZE -1 : y / SIZE); //¾î·Á¿ò
-		y = 10 + y;
+		if (x > 9) {
+			printf("ì¢…ë£Œ ìœ„ì¹˜: (%d, %d), ë°°ì—´ì˜ ê°’: %d", endX, endY, value);
+			return;
+		}
 	}
-	printf("´õ ÀÌ»ó ÀÌµ¿ÇÏÁö ¸øÇÔ\n");
-	printf("Á¾·á À§Ä¡: (%d, %d), ¹è¿­ÀÇ °ª: %d", x, y, current);
+
 }
 
 int main(void) {
-	int arr[SIZE][SIZE];
+	int array[SIZE][SIZE];
 
 	srand(time(NULL));
 
-	fillRandom(arr);
-	printArray(arr);
-	movePointer(arr);
+	fillRandom(array);
+	printArray(array);
+	movePointer(array);
 
-	
 }
