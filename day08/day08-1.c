@@ -2,32 +2,34 @@
 #include <string.h>
 
 int isAlphabet(char *str) {
-    for (int i = 0; i < strlen(str)-1; i++) { // ¹®ÀÚ¿­Å¸ÀÔÀº ¸¶Áö¸·¿¡ °ø¹éÀÌ ¿À±â¶«¿¡ -1 ÇØÁÜ
-        if (!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))) {
-            return 0;
+    for (int i = 0; i < strlen(str)-1; i++) { // ë¬¸ìì—´íƒ€ì…ì€ ë§ˆì§€ë§‰ì— ê³µë°±ì´ ì˜¤ê¸°ë•œì— -1 í•´ì¤Œ
+        if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')) {
+            return 1;
         }
     }
-    return 1;
+    return 0;
 }
 
 int main(void) {
     char string[100]; 
 
-    printf("ÀÔ·Â: ");
-    fgets(string, sizeof(string), stdin); // scanf_s´Â °ø¹éÀ» ±âÁØÀ¸·Î ³ª´©±â¶§¹®¿¡ fgets ÇÔ¼ö·Î ¹®ÀÚ¿­À» ±×´ë·Î ¹Ş¾ÆµéÀÓ
+    printf("ì…ë ¥: ");
+    scanf_s("%s", string, sizeof(string));
 
-    int n = strlen(string); //¹®ÀÚ¿­ ±æÀÌ
+    int n = strlen(string); //ë¬¸ìì—´ ê¸¸ì´
+
+    printf("%d", n);
 
     if (isAlphabet(string)) {
-        for (int i = 0; i < n / 2; i++) {  // ´ëÄªÀ¸·Î ±³È¯ÇÏ¸é µÇ¹Ç·Î n/2¹ø¸¸ ÇÏ¸é µÊ
-            char temp = string[i];
-            string[i] = string[n - i - 1];
-            string[n - i - 1] = temp;
+        for (int i = 0; i < n / 2 ; i++) {  // ëŒ€ì¹­ìœ¼ë¡œ êµí™˜í•˜ë©´ ë˜ë¯€ë¡œ n/2ë²ˆë§Œ í•˜ë©´ ë¨
+            char temp =string[n - i - 1];
+            string[n - i - 1] = string[i];
+            string[i] = temp;
         }
 
-        printf("µÚÁıÈù ¹®ÀÚ¿­: %s\n", string);
+        printf("ë’¤ì§‘íŒ ë¬¸ìì—´: %s\n", string);
     }
     else {
-        printf("¹üÀ§°¡ ¾Æ´Ô");
+        printf("ë²”ìœ„ê°€ ì•„ë‹˜");
     }
 }
